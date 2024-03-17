@@ -19,7 +19,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public Memo selectedMemo = null;
     public int selectedPos = RecyclerView.NO_POSITION;
 
-    public RecyclerViewAdapter(List<Memo> data) { this.data = data; }
+    public RecyclerViewAdapter(List<Memo> data) {
+        this.data = data;
+    }
 
     @NonNull
     @Override
@@ -48,19 +50,24 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
 
-
     @Override
-    public int getItemCount() { return data.size(); }
+    public int getItemCount() {
+        return data.size();
+    }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private Memo memo;
 
-        public ViewHolder(View itemView) { super(itemView); }
+        public ViewHolder(View itemView) {
+            super(itemView);
+        }
 
-        public void setMemo(Memo memo) { this.memo = memo; }
+        public void setMemo(Memo memo) {
+            this.memo = memo;
+        }
 
         public void bindData() {
-            TextView nameLabel = (TextView) itemView.findViewById(R.id.memoNameLabel);
+            TextView nameLabel = itemView.findViewById(R.id.memoNameLabel);
 
             nameLabel.setText((memo.getName()));
         }

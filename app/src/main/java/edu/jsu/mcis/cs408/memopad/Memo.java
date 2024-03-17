@@ -23,8 +23,6 @@ public class Memo {
     @NonNull
     @Override
     public String toString() {
-        StringBuilder s = new StringBuilder();
-        s.append(id).append(" | ").append(name).append('\n');
-        return s.toString();
+        return id + " | " + name + '\n';
     }
 }

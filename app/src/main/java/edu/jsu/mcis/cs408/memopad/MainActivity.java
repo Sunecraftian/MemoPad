@@ -1,26 +1,20 @@
 package edu.jsu.mcis.cs408.memopad;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import java.beans.PropertyChangeEvent;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import edu.jsu.mcis.cs408.memopad.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity /*implements AbstractView*/{
+public class MainActivity extends AppCompatActivity /*implements AbstractView*/ {
 
     public final String TAG = "MAIN";
 
-    public ActivityMainBinding binding;
+    private ActivityMainBinding binding;
     private DatabaseHandler db;
-
-//    private MemoPadController controller;
-//    private MemoPadModel model;
     private RecyclerViewAdapter adapter;
 
 
@@ -31,31 +25,21 @@ public class MainActivity extends AppCompatActivity /*implements AbstractView*/{
         View view = binding.getRoot();
         setContentView(view);
 
-//        model = new MemoPadModel();
-//        controller = new MemoPadController(model, this);
-//
-//        controller.addView(this);
-//        controller.addModel(model);
-
-        db = new DatabaseHandler(this, null,null, 1);
+        db = new DatabaseHandler(this, null, null, 1);
 
         updateRecyclerView();
 
         binding.addButton.setOnClickListener(v -> {
             addMemo();
-//            controller.addMemo();
         });
 
         binding.deleteButton.setOnClickListener(v -> {
             deleteMemo();
-//            controller.deleteMemo();
         });
-
-
     }
 
 
-    void addMemo(){
+    void addMemo() {
         String name = binding.inputField.getText().toString();
         Memo m = new Memo(name);
         db.addMemo(m);
@@ -74,7 +58,6 @@ public class MainActivity extends AppCompatActivity /*implements AbstractView*/{
     }
 
 
-
     private void updateRecyclerView() {
 
         adapter = new RecyclerViewAdapter(db.getAllMemosAsList());
@@ -85,9 +68,5 @@ public class MainActivity extends AppCompatActivity /*implements AbstractView*/{
         Log.i(TAG, "Updated Recycler View");
     }
 
-//    @Override
-//    public void modelPropertyChange(PropertyChangeEvent evt) {
-//
-//    }
 }
 
